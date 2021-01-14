@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react"
+import React,{useState} from "react"
 import Heading from "../components/heading"
 import Layout from "../components/layout"
 import Nominee from "../components/nominee"
@@ -15,22 +15,22 @@ const IndexPage = () => {
   
 
   const Nominate = (nominee)=> {
-
-      const movie = movies.find(item => item === nominee)
-      movie.nominated = true
-      setNominations([...nominations, nominee])
-      console.log(movie)
+      if(nominations.length < 5){
+        const movie = movies.find(item => item === nominee)
+        movie.nominated = true
+        setNominations([...nominations, nominee])
+      }else{
+        alert("That's all mate, Denominate a movie")
+      }
+     
    
   }
   const Denominate = (nominee)=> {
 
-      const movie = movies.find(item => item === nominee)
-      movie.nominated = false
-      console.log(nominations.indexOf(nominee))
-      console.log(nominations.splice(nominations.indexOf(nominee), 1))
+      nominations.indexOf(nominee)
+      nominations.splice(nominations.indexOf(nominee), 1)
       setNominations([...nominations])
-      console.log(movie)
-   
+
   }
 
 
@@ -101,7 +101,7 @@ const IndexPage = () => {
 
       <section className="px-10 w-8/12 ">
         <Heading title="Nominations" light={true} />
-        <section className="flex flex-wrap">
+        <section className="grid grid-cols-3 gap-4">
 
         {allNominations.length > 0 && allNominations }
         </section>

@@ -8,8 +8,11 @@ const SearchTerm = ({title, releaseDate, nominate, nominated=false}) => {
                 <h2>{title}</h2>
                 <p className="text-xs"><small>Release Date: {releaseDate}</small></p>
             </header>
-            <button onClick={nominate} disabled={nominated}  className="uppercase w-3/12 border-black text-xs text-center border">
-                Nominate
+            <button 
+            onClick={nominate} 
+            disabled={nominated}  
+            className={(nominated && 'bg-gray-300')+` uppercase w-3/12 border-black text-xs text-center border`}>
+                Nominate{nominated && 'd'}
             </button>
         </article>
     )
