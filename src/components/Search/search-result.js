@@ -1,9 +1,8 @@
 import React from 'react'
 
-const SearchTerm = ({title, releaseDate, nominate, nominated=false}) => {
+const SearchResult = ({title, releaseDate, nominate, nominated=false}) => {
     return(
-        <article className="flex w-full mb-4">
-            
+        <article className="flex w-full mb-4">  
             <header className="w-9/12 px-4 py-2 border-black border border-r-0">
                 <h2>{title}</h2>
                 <p className="text-xs"><small>Release Date: {releaseDate}</small></p>
@@ -18,4 +17,4 @@ const SearchTerm = ({title, releaseDate, nominate, nominated=false}) => {
     )
 }
 
-export default SearchTerm
+export default SearchResult
