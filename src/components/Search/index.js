@@ -12,7 +12,7 @@ const Search = (props) => {
         
         // props.setSearchTerm(e.target.value)
         
-        fetch(`http://www.omdbapi.com/?s=${e.target.value}&apikey=748b7fee`)
+        fetch(`https://www.omdbapi.com/?s=${e.target.value}&apikey=748b7fee`)
         .then(res => res.json())
         .then(
           data => {
