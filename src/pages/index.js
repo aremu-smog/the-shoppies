@@ -19,23 +19,23 @@ const IndexPage = () => {
   const [errorMessage, setErrorMessage] = useState("")
 
   // variable to hold store nominations in localStorage so that users can access the nominees list after they close the app and come back to it
-  const nominationsLocal = window.localStorage
+
 
   //When the component mounts
   useEffect(()=> {
 
     //If there is not item called nominations in the localStorage
-    if(nominationsLocal.getItem("nominations") === null){
+    if(localStorage.getItem("nominations") === null){
 
       //Create an item nominations and set it to an empty array
-      nominationsLocal.setItem('nominations',JSON.stringify([]))
+      localStorage.setItem('nominations',JSON.stringify([]))
     }else{
 
       //Else if nominations exist in localStorage, update the local state to the content of nominations in the local storage
-      setNominations(JSON.parse(nominationsLocal.getItem(["nominations"])))
+      setNominations(JSON.parse(localStorage.getItem(["nominations"])))
     }
 
-  },[nominationsLocal])
+  },[])
   
 
   // Function to nominate a movie
@@ -51,10 +51,10 @@ const IndexPage = () => {
         movie.nominated = true
 
         //Get all the existing nomations from the localStorage
-        const existingNominations = JSON.parse(nominationsLocal.getItem("nominations"))
+        const existingNominations = JSON.parse(localStorage.getItem("nominations"))
       
         //Update the localStorage by appending the nominee to existingNominations
-        nominationsLocal.setItem("nominations",JSON.stringify([...existingNominations,nominee]))
+        localStorage.setItem("nominations",JSON.stringify([...existingNominations,nominee]))
 
         //Update local state also
         setNominations([...nominations, nominee])
@@ -83,7 +83,7 @@ const IndexPage = () => {
       nominations.splice(nominations.indexOf(nominee), 1)
 
       //Set the localStorage to the new nominations
-      nominationsLocal.setItem("nominations",JSON.stringify([...nominations]))
+      localStorage.setItem("nominations",JSON.stringify([...nominations]))
 
       //Set the localstate to the new nominations
       setNominations([...nominations])
