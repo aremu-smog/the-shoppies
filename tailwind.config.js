@@ -1,8 +1,13 @@
 module.exports = {
-  purge: [],
+  purge: ['./src/**/*.{js}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'playfair': ['Playfair','serif'],
+        'montserrat': ['Montserrat','sans-serif']
+      }
+    },
   },
   variants: {
     extend: {},
